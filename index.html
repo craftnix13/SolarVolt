@@ -1,1 +1,2909 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SolarVolt — Premium Solar Energy Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --gold: #F5A623;
+            --gold2: #FFD06A;
+            --dark: #0A0E1A;
+            --dark2: #111827;
+            --dark3: #1C2333;
+            --text: #E8EAF0;
+            --muted: #8B95A8;
+            --accent: #00C6A2;
+            --accent2: #00F5D4;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 36px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Syne', sans-serif;
+            line-height: 1.15;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        /* ── NOISE TEXTURE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: .4;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            transition: all .4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 14, 26, .85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: .9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color .3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width .3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark) !important;
+            padding: .6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: .85rem !important;
+            transition: transform .2s, box-shadow .2s !important;
+            box-shadow: 0 0 20px rgba(245, 166, 35, .3);
+        }
+
+        .btn-nav::after {
+            display: none !important;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 30px rgba(245, 166, 35, .5) !important;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all .3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(17, 24, 39, .98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            padding: 100px 2rem 2rem;
+            transition: right .4s cubic-bezier(.77, 0, .175, 1);
+            border-left: 1px solid var(--glass-border);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .mobile-menu ul li a {
+            color: var(--text);
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu ul li a i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .menu-cta {
+            margin-top: 2rem;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(245, 166, 35, .12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(0, 198, 162, .08) 0%, transparent 60%),
+                linear-gradient(170deg, #0A0E1A 0%, #0D1220 40%, #0A0E1A 100%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: radial-gradient(circle, rgba(245, 166, 35, .15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translateY(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeUp .8s ease both;
+            margin-top: 10%;
+            margin-bottom: 4%;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 166, 35, .1);
+            border: 1px solid rgba(245, 166, 35, .3);
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--gold2);
+            margin-bottom: 1.5rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .hero-badge i {
+            font-size: .7rem;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1.hero-title {
+            font-size: clamp(2.8rem, 6vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+
+        h1.hero-title span {
+            background: linear-gradient(135deg, var(--gold), var(--gold2), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            padding: .9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .95rem;
+            text-decoration: none;
+            transition: all .3s;
+            box-shadow: 0 0 30px rgba(245, 166, 35, .4);
+            font-family: 'Syne', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(245, 166, 35, .6);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--white);
+            padding: .9rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: .95rem;
+            text-decoration: none;
+            transition: all .3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, .12);
+            border-color: rgba(255, 255, 255, .25);
+        }
+
+        .hero-trust {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-avatars {
+            display: flex;
+        }
+
+        .trust-avatars span {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--dark);
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-left: -8px;
+        }
+
+        .trust-avatars span:first-child {
+            margin-left: 0;
+        }
+
+        .trust-text {
+            font-size: .85rem;
+            color: var(--muted);
+        }
+
+        .trust-text strong {
+            color: var(--white);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42%;
+            max-width: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solar-panel-img {
+            width: 100%;
+            filter: drop-shadow(0 30px 60px rgba(245, 166, 35, .3));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ── SECTION COMMON ── */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 100px 5%;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 550px;
+            line-height: 1.8;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-sub {
+            margin: 0 auto;
+        }
+
+        .text-center .section-label {
+            justify-content: center;
+        }
+
+        .text-center .section-label::before {
+            display: none;
+        }
+
+        /* ── STATS ── */
+        #stats {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .05), rgba(0, 198, 162, .05));
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem 0rem;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--glass-border);
+        }
+
+        .stat-number {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 2vw, 2.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-top: .3rem;
+        }
+
+        /* ── WHY CHOOSE US ── */
+        #why {
+            background: var(--dark2);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .why-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .why-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: all .3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .why-card:hover {
+            border-color: rgba(245, 166, 35, .4);
+            background: rgba(245, 166, 35, .06);
+            transform: translateX(8px);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .2), rgba(245, 166, 35, .1));
+            border: 1px solid rgba(245, 166, 35, .3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .why-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: .3rem;
+        }
+
+        .why-card p {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .why-visual {
+            position: relative;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .1), rgba(0, 198, 162, .05));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .why-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(245, 166, 35, .1), transparent 70%);
+        }
+
+        .energy-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .energy-circle svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .energy-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .e-stat {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .e-stat strong {
+            display: block;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .e-stat span {
+            font-size: .75rem;
+            color: var(--muted);
+        }
+
+        /* ── SERVICES ── */
+        #services {
+            background: var(--dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all .4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold2));
+            transform: scaleX(0);
+            transition: transform .4s;
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245, 166, 35, .3);
+            background: rgba(245, 166, 35, .05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(245, 166, 35, .1);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .15), rgba(245, 166, 35, .05));
+            border: 1px solid rgba(245, 166, 35, .25);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: .6rem;
+        }
+
+        .service-card p {
+            font-size: .875rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--gold);
+            font-size: .85rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: gap .3s;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        /* ── PROJECT GALLERY ── */
+        #projects {
+            background: var(--dark2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            background: var(--dark3);
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+            background: linear-gradient(135deg, #1a2535, #0d1520);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--dark3), var(--dark2));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .05), rgba(0, 198, 162, .05));
+        }
+
+        .gallery-placeholder i {
+            position: relative;
+            z-index: 1;
+            color: rgba(245, 166, 35, .4);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 14, 26, .95) 0%, rgba(10, 14, 26, .3) 60%, transparent 100%);
+            opacity: 0;
+            transition: opacity .4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-placeholder i {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .gallery-overlay p {
+            font-size: .8rem;
+            color: var(--gold2);
+            margin-top: .3rem;
+        }
+
+        .gallery-zoom {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(245, 166, 35, .9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transform: scale(0);
+            transition: transform .3s;
+        }
+
+        .gallery-item:hover .gallery-zoom {
+            transform: scale(1);
+        }
+
+        /* ── PRICING ── */
+        #pricing {
+            background: var(--dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+            align-items: start;
+        }
+
+        .price-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all .4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-card.featured {
+            border-color: rgba(245, 166, 35, .5);
+            background: rgba(245, 166, 35, .06);
+            transform: scale(1.04);
+        }
+
+        .price-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            padding: .25rem .8rem;
+            border-radius: 50px;
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .price-card:hover:not(.featured) {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, .2);
+        }
+
+        .price-plan {
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: .8rem;
+        }
+
+        .price-amount {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: .2rem;
+        }
+
+        .price-amount sup {
+            font-size: 1.2rem;
+            color: var(--muted);
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            color: var(--muted);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .price-desc {
+            font-size: .85rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .price-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            font-size: .875rem;
+            color: var(--text);
+        }
+
+        .price-features li i {
+            color: var(--accent);
+            font-size: .8rem;
+            min-width: 16px;
+        }
+
+        .price-features li.muted {
+            color: var(--muted);
+        }
+
+        .price-features li.muted i {
+            color: var(--muted);
+        }
+
+        .btn-price {
+            display: block;
+            text-align: center;
+            padding: .85rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            text-decoration: none;
+            transition: all .3s;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .btn-price.outline {
+            border: 1.5px solid var(--glass-border);
+            color: var(--white);
+        }
+
+        .btn-price.outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-price.solid {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            box-shadow: 0 0 25px rgba(245, 166, 35, .4);
+        }
+
+        .btn-price.solid:hover {
+            box-shadow: 0 8px 40px rgba(245, 166, 35, .6);
+        }
+
+        /* ── TESTIMONIALS ── */
+        #testimonials {
+            background: var(--dark2);
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform .6s cubic-bezier(.77, 0, .175, 1);
+        }
+
+        .testimonial-slide {
+            min-width: calc(50% - 1rem);
+            margin-right: 2rem;
+        }
+
+        .testi-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        .testi-stars {
+            color: var(--gold);
+            font-size: .9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testi-text {
+            font-size: .95rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testi-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(245, 166, 35, .15);
+            font-family: 'Syne', sans-serif;
+            line-height: 1;
+            position: absolute;
+            top: -1rem;
+            left: -0.5rem;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testi-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .testi-author h5 {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: .1rem;
+        }
+
+        .testi-author p {
+            font-size: .8rem;
+            color: var(--muted);
+        }
+
+        .slider-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s;
+        }
+
+        .slider-btn:hover {
+            background: rgba(245, 166, 35, .2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--glass-border);
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ── FAQ ── */
+        #faq {
+            background: var(--dark);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            cursor: pointer;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            text-align: left;
+            gap: 1rem;
+            transition: color .3s;
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            color: var(--muted);
+            transition: all .3s;
+        }
+
+        .faq-item.open .faq-icon {
+            background: rgba(245, 166, 35, .15);
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 0 1.5rem;
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* ── TRUST BADGES ── */
+        #trust {
+            padding: 60px 5%;
+            background: var(--dark2);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .trust-title {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+            letter-spacing: .05em;
+        }
+
+        .badges-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            transition: all .3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge:hover {
+            border-color: rgba(245, 166, 35, .3);
+            transform: translateY(-3px);
+        }
+
+        .badge i {
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .badge span {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        /* ── CTA SECTION ── */
+        #cta-main {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .08) 0%, rgba(0, 198, 162, .05) 100%);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cta-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(245, 166, 35, .1), transparent 70%);
+        }
+
+        #cta-main .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        #cta-main .section-sub {
+            margin: 1rem auto 2.5rem;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .c-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            transition: all .3s;
+        }
+
+        .c-detail:hover {
+            border-color: rgba(245, 166, 35, .3);
+        }
+
+        .c-detail i {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, rgba(245, 166, 35, .15), rgba(245, 166, 35, .05));
+            border: 1px solid rgba(245, 166, 35, .2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .95rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .c-detail div strong {
+            font-size: .8rem;
+            color: var(--muted);
+            display: block;
+            margin-bottom: .2rem;
+        }
+
+        .c-detail div span {
+            font-size: .9rem;
+            color: var(--white);
+        }
+
+        /* Form */
+        .contact-form {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: .85rem;
+            pointer-events: none;
+            transition: color .3s;
+        }
+
+        .form-group.textarea i {
+            top: 1.1rem;
+            transform: none;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: .85rem 1rem .85rem 2.6rem;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            color: var(--white);
+            font-size: .9rem;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: all .3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group textarea {
+            padding-top: 1rem;
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--muted);
+        }
+
+        .form-group select option {
+            background: var(--dark2);
+            color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: rgba(245, 166, 35, .5);
+            background: rgba(245, 166, 35, .05);
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, .1);
+        }
+
+        .form-group:focus-within i {
+            color: var(--gold);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            box-shadow: 0 0 30px rgba(245, 166, 35, .3);
+            margin-top: .5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(245, 166, 35, .5);
+        }
+
+        .btn-submit.loading {
+            pointer-events: none;
+            opacity: .8;
+        }
+
+        .btn-submit .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(10, 14, 26, .3);
+            border-top-color: var(--dark);
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            display: none;
+        }
+
+        .btn-submit.loading .spinner {
+            display: block;
+        }
+
+        .btn-submit.loading .btn-text {
+            display: none;
+        }
+
+        /* Success popup */
+        .success-popup {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, .7);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .4s;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .success-box {
+            background: var(--dark2);
+            border: 1px solid rgba(0, 198, 162, .3);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(.8);
+            transition: transform .4s;
+        }
+
+        .success-popup.show .success-box {
+            transform: scale(1);
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(0, 198, 162, .2), rgba(0, 245, 212, .1));
+            border: 1px solid rgba(0, 198, 162, .4);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            animation: popIn .5s cubic-bezier(.34, 1.56, .64, 1) .2s both;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-box h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: .5rem;
+        }
+
+        .success-box p {
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-close-popup {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            border: none;
+            padding: .7rem 2rem;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: .9rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark2);
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-desc {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 280px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: .8rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: .85rem;
+            text-decoration: none;
+            transition: all .3s;
+        }
+
+        .social-btn:hover {
+            background: rgba(245, 166, 35, .15);
+            border-color: rgba(245, 166, 35, .4);
+            color: var(--gold);
+        }
+
+        .footer-col h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .footer-col ul li a {
+            font-size: .85rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            font-size: .8rem;
+            color: var(--muted);
+        }
+
+        .footer-bottom span {
+            color: var(--gold);
+        }
+
+        /* ── FLOATING BUTTONS ── */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            z-index: 900;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: #fff;
+            animation: bounceWA 2s ease-in-out infinite;
+            transition: transform .3s;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounceWA {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .float-quote {
+            position: fixed;
+            bottom: 28px;
+            right: 24px;
+            z-index: 900;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--dark);
+            padding: .7rem 1.4rem;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: .85rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(245, 166, 35, .4);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            transition: all .3s;
+            white-space: nowrap;
+        }
+
+        .float-quote:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 166, 35, .6);
+        }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .7s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            h1.hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 1;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-slide {
+                min-width: 100%;
+            }
+
+            .hero-content {
+                margin-top: 30%;
+                margin-bottom: 4%;
+            }
+
+            .stat-number {
+                font-size: clamp(1.5rem, 2vw, 2.5rem);
+            }
+
+            #cta-main .section-title {
+                font-size: clamp(1.7rem, 4vw, 3.5rem);
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════ NAVBAR ══════════════ -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-sun"></i></div>
+            Solar<span>Volt</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="btn-nav">Get Free Quote</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#why" class="nav-mobile-link"><i class="fas fa-star"></i>Why SolarVolt</a></li>
+            <li><a href="#services" class="nav-mobile-link"><i class="fas fa-solar-panel"></i>Services</a></li>
+            <li><a href="#projects" class="nav-mobile-link"><i class="fas fa-images"></i>Projects</a></li>
+            <li><a href="#pricing" class="nav-mobile-link"><i class="fas fa-tags"></i>Pricing</a></li>
+            <li><a href="#faq" class="nav-mobile-link"><i class="fas fa-question-circle"></i>FAQ</a></li>
+            <li><a href="#contact" class="nav-mobile-link"><i class="fas fa-phone"></i>Contact</a></li>
+        </ul>
+        <div class="menu-cta">
+            <a href="#contact" class="btn-primary nav-mobile-link" style="justify-content:center;"><i
+                    class="fas fa-bolt"></i>Get Free Quote</a>
+        </div>
+    </div>
+
+    <!-- ══════════════ HERO ══════════════ -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sun"></i>
+                India's #1 Premium Solar Company
+            </div>
+            <h1 class="hero-title">
+                Power Your Future<br>With <span>Clean Energy</span>
+            </h1>
+            <p class="hero-sub">
+                Premium solar solutions for homes &amp; businesses. Cut electricity bills by up to 90% with our
+                certified, warranty-backed solar systems.
+            </p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-primary"><i class="fas fa-bolt"></i>Get Free Quote</a>
+                <a href="#projects" class="btn-secondary"><i class="fas fa-play-circle"></i>View Projects</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-avatars">
+                    <span>RK</span><span>AM</span><span>SP</span><span>VJ</span><span>+</span>
+                </div>
+                <p class="trust-text"><strong>2,500+ happy customers</strong> across Maharashtra</p>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <svg class="solar-panel-img" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1a2a4a" />
+                        <stop offset="100%" style="stop-color:#0d1a30" />
+                    </linearGradient>
+                    <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#F5A623" />
+                        <stop offset="100%" style="stop-color:#FFD06A" />
+                    </linearGradient>
+                    <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1e3a5f" />
+                        <stop offset="100%" style="stop-color:#0f2040" />
+                    </linearGradient>
+                </defs>
+                <!-- Ground shadow -->
+                <ellipse cx="260" cy="355" rx="180" ry="18" fill="rgba(0,0,0,0.3)" />
+                <!-- Panel frame -->
+                <rect x="50" y="60" width="420" height="270" rx="12" fill="url(#pg)" stroke="#2a4060"
+                    stroke-width="2" />
+                <!-- Solar cells grid -->
+                <g opacity="0.9">
+                    <!-- Row 1 -->
+                    <rect x="70" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="165" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="260" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="355" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <!-- Row 2 -->
+                    <rect x="70" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="165" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="260" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="355" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <!-- Row 3 -->
+                    <rect x="70" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="165" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="260" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                    <rect x="355" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
+                        stroke-width="1" />
+                </g>
+                <!-- Highlight sheen -->
+                <rect x="50" y="60" width="420" height="120" rx="12" fill="url(#pg)" opacity="0.3" />
+                <!-- Sun -->
+                <circle cx="430" cy="40" r="28" fill="url(#cg)" opacity="0.9" />
+                <g stroke="#F5A623" stroke-width="2" opacity="0.6">
+                    <line x1="430" y1="4" x2="430" y2="0" />
+                    <line x1="430" y1="76" x2="430" y2="80" />
+                    <line x1="394" y1="40" x2="390" y2="40" />
+                    <line x1="466" y1="40" x2="470" y2="40" />
+                    <line x1="404.5" y1="14.5" x2="401.6" y2="11.6" />
+                    <line x1="455.5" y1="65.5" x2="458.4" y2="68.4" />
+                    <line x1="404.5" y1="65.5" x2="401.6" y2="68.4" />
+                    <line x1="455.5" y1="14.5" x2="458.4" y2="11.6" />
+                </g>
+                <!-- Support legs -->
+                <rect x="160" y="330" width="12" height="30" rx="4" fill="#1a2a3a" />
+                <rect x="348" y="330" width="12" height="30" rx="4" fill="#1a2a3a" />
+                <!-- Energy indicators -->
+                <circle cx="100" cy="30" r="20" fill="rgba(0,198,162,0.15)" stroke="rgba(0,198,162,0.4)"
+                    stroke-width="1" />
+                <text x="100" y="35" text-anchor="middle" fill="#00C6A2" font-size="11" font-family="Syne,sans-serif"
+                    font-weight="700">ON</text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ══════════════ STATS ══════════════ -->
+    <section id="stats">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="2500">0</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="90" data-suffix="%">0</span>
+                <span class="stat-label">Bill Reduction Avg.</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="50" data-suffix="MW+">0</span>
+                <span class="stat-label">Total Capacity Installed</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="25" data-suffix="yr">0</span>
+                <span class="stat-label">Product Warranty</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ WHY US ══════════════ -->
+    <section id="why">
+        <div class="why-grid">
+            <div>
+                <div class="section-label"><i class="fas fa-certificate"></i>Why Choose SolarVolt</div>
+                <h2 class="section-title">India's Most <span>Trusted</span> Solar Brand</h2>
+                <p class="section-sub" style="margin-bottom:2rem;">We don't just install panels. We deliver a complete
+                    energy transformation with certified experts and lifetime support.</p>
+                <div class="why-cards">
+                    <div class="why-card reveal">
+                        <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h4>25-Year Product Warranty</h4>
+                            <p>Every panel backed by comprehensive warranty. Your investment is fully protected for 25
+                                years.</p>
+                        </div>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon"><i class="fas fa-tools"></i></div>
+                        <div>
+                            <h4>5-Year Free Maintenance</h4>
+                            <p>Complete AMC coverage included free for 5 years. Zero hidden charges, ever.</p>
+                        </div>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4>MNRE Certified Installer</h4>
+                            <p>Government of India approved. Eligible for all state &amp; central subsidies
+                                automatically.</p>
+                        </div>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon"><i class="fas fa-rupee-sign"></i></div>
+                        <div>
+                            <h4>Easy EMI — 0% Interest</h4>
+                            <p>Finance your solar system with zero cost EMI options. ROI within 3-4 years guaranteed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-visual reveal">
+                <div class="energy-circle">
+                    <svg viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F5A623" />
+                                <stop offset="100%" style="stop-color:#00C6A2" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)"
+                            stroke-width="20" />
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="url(#circleGrad)" stroke-width="20"
+                            stroke-dasharray="440" stroke-dashoffset="88" stroke-linecap="round"
+                            transform="rotate(-90 100 100)" style="filter:drop-shadow(0 0 12px rgba(245,166,35,0.6))" />
+                        <text x="100" y="95" text-anchor="middle" fill="#fff" font-size="28"
+                            font-family="Syne,sans-serif" font-weight="800">80%</text>
+                        <text x="100" y="118" text-anchor="middle" fill="#8B95A8" font-size="11"
+                            font-family="DM Sans,sans-serif">Energy Saved</text>
+                    </svg>
+                </div>
+                <div class="energy-stats">
+                    <div class="e-stat">
+                        <strong>₹0</strong>
+                        <span>Electricity Bill</span>
+                    </div>
+                    <div class="e-stat">
+                        <strong>4 yrs</strong>
+                        <span>Payback Period</span>
+                    </div>
+                    <div class="e-stat">
+                        <strong>CO₂</strong>
+                        <span>Zero Emission</span>
+                    </div>
+                    <div class="e-stat">
+                        <strong>24/7</strong>
+                        <span>Monitoring App</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ SERVICES ══════════════ -->
+    <section id="services">
+        <div class="text-center">
+            <div class="section-label">What We Offer</div>
+            <h2 class="section-title">Complete Solar <span>Solutions</span></h2>
+            <p class="section-sub">From design to installation and beyond — we handle everything so you don't have to.
+            </p>
+        </div>
+        <div class="services-grid" style="margin-top:4rem;">
+            <div class="service-card reveal">
+                <div class="service-num">01</div>
+                <div class="service-icon"><i class="fas fa-home"></i></div>
+                <h3>Residential Solar</h3>
+                <p>Custom rooftop solar systems for homes. 1kW to 10kW systems with net metering and subsidy assistance
+                    included.</p>
+                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">02</div>
+                <div class="service-icon"><i class="fas fa-building"></i></div>
+                <h3>Commercial Solar</h3>
+                <p>High-capacity systems for offices, factories &amp; malls. Reduce operational costs and achieve
+                    sustainability goals.</p>
+                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">03</div>
+                <div class="service-icon"><i class="fas fa-industry"></i></div>
+                <h3>Industrial Solar</h3>
+                <p>Megawatt-scale solar plants for industries. Custom EPC solutions with complete project management.
+                </p>
+                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">04</div>
+                <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+                <h3>Battery Storage</h3>
+                <p>Store excess solar energy with lithium-ion battery systems. 24/7 power backup with smart management.
+                </p>
+                <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">05</div>
+                <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <h3>Smart Monitoring</h3>
+                <p>Real-time energy monitoring via mobile app. Track generation, consumption and savings from anywhere.
+                </p>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-num">06</div>
+                <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                <h3>O&amp;M Services</h3>
+                <p>Annual maintenance contracts for all brands. Professional cleaning, inspection and performance
+                    optimization.</p>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PROJECTS GALLERY ══════════════ -->
+    <section id="projects">
+        <div class="text-center">
+            <div class="section-label">Our Work</div>
+            <h2 class="section-title">Installed <span>Across India</span></h2>
+            <p class="section-sub">2,500+ successful installations. Every project designed for maximum output and
+                long-term performance.</p>
+        </div>
+        <div class="gallery-grid" style="margin-top:3rem;">
+            <div class="gallery-item reveal">
+                <div class="gallery-placeholder"><i class="fas fa-solar-panel"></i></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Nagpur Residential Complex</h4>
+                    <p>50kW System · ₹3.2L Annual Savings</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <div class="gallery-placeholder" style="font-size:3rem;"><i class="fas fa-building"></i></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Pune IT Park</h4>
+                    <p>200kW System · 100% Green Office</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <div class="gallery-placeholder" style="font-size:3rem;"><i class="fas fa-store"></i></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Mumbai Retail Chain</h4>
+                    <p>500kW System · 15 Locations</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <div class="gallery-placeholder" style="font-size:3rem;"><i class="fas fa-school"></i></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Amravati School Campus</h4>
+                    <p>30kW System · Zero Bill School</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <div class="gallery-placeholder" style="font-size:3rem;"><i class="fas fa-industry"></i></div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Aurangabad Factory</h4>
+                    <p>1MW Industrial Plant · 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PRICING ══════════════ -->
+    <section id="pricing">
+        <div class="text-center">
+            <div class="section-label">Solar Packages</div>
+            <h2 class="section-title">Transparent <span>Pricing</span></h2>
+            <p class="section-sub">No hidden costs. Government subsidy applied automatically. EMI available at 0%
+                interest.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal">
+                <p class="price-plan">Starter</p>
+                <div class="price-amount"><sup>₹</sup>89,999<span>/system</span></div>
+                <p class="price-desc">Perfect for small homes &amp; apartments. 1kW–3kW capacity.</p>
+                <ul class="price-features">
+                    <li><i class="fas fa-check-circle"></i>3kW Mono PERC Panels</li>
+                    <li><i class="fas fa-check-circle"></i>3kW Grid-Tie Inverter</li>
+                    <li><i class="fas fa-check-circle"></i>Complete Installation</li>
+                    <li><i class="fas fa-check-circle"></i>Net Meter Application</li>
+                    <li><i class="fas fa-check-circle"></i>Subsidy Assistance</li>
+                    <li><i class="fas fa-check-circle"></i>1-Year Free AMC</li>
+                    <li class="muted"><i class="fas fa-times-circle"></i>Battery Backup</li>
+                    <li class="muted"><i class="fas fa-times-circle"></i>Smart Monitoring App</li>
+                </ul>
+                <a href="#contact" class="btn-price outline">Get Started</a>
+            </div>
+            <div class="price-card featured reveal">
+                <p class="price-plan">Popular</p>
+                <div class="price-amount"><sup>₹</sup>1,74,999<span>/system</span></div>
+                <p class="price-desc">Best for medium homes &amp; small businesses. 5kW–7kW capacity.</p>
+                <ul class="price-features">
+                    <li><i class="fas fa-check-circle"></i>7kW Premium Bifacial Panels</li>
+                    <li><i class="fas fa-check-circle"></i>7kW Hybrid Inverter</li>
+                    <li><i class="fas fa-check-circle"></i>Complete Installation</li>
+                    <li><i class="fas fa-check-circle"></i>Net Meter Application</li>
+                    <li><i class="fas fa-check-circle"></i>Subsidy Assistance</li>
+                    <li><i class="fas fa-check-circle"></i>3-Year Free AMC</li>
+                    <li><i class="fas fa-check-circle"></i>5kWh Battery Backup</li>
+                    <li><i class="fas fa-check-circle"></i>Smart Monitoring App</li>
+                </ul>
+                <a href="#contact" class="btn-price solid">Get Started</a>
+            </div>
+            <div class="price-card reveal">
+                <p class="price-plan">Enterprise</p>
+                <div class="price-amount"><span style="font-size:1.8rem;color:#fff;">Custom</span></div>
+                <p class="price-desc">For commercial &amp; industrial projects. 10kW–1MW+ capacity.</p>
+                <ul class="price-features">
+                    <li><i class="fas fa-check-circle"></i>Custom Panel Configuration</li>
+                    <li><i class="fas fa-check-circle"></i>Industrial Grade Inverter</li>
+                    <li><i class="fas fa-check-circle"></i>Complete EPC Service</li>
+                    <li><i class="fas fa-check-circle"></i>Net Meter + Open Access</li>
+                    <li><i class="fas fa-check-circle"></i>Full Subsidy Management</li>
+                    <li><i class="fas fa-check-circle"></i>5-Year Free AMC</li>
+                    <li><i class="fas fa-check-circle"></i>BESS Integration</li>
+                    <li><i class="fas fa-check-circle"></i>SCADA Monitoring</li>
+                </ul>
+                <a href="#contact" class="btn-price outline">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ TESTIMONIALS ══════════════ -->
+    <section id="testimonials">
+        <div class="text-center">
+            <div class="section-label">Customer Stories</div>
+            <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+            <p class="section-sub">Real results, real savings. Hear from our happy customers across Maharashtra.</p>
+        </div>
+        <div class="testimonial-slider" style="margin-top:3rem;">
+            <div class="testimonials-track" id="testiTrack">
+                <div class="testimonial-slide">
+                    <div class="testi-card">
+                        <div class="testi-stars">★★★★★</div>
+                        <p class="testi-text">My electricity bill dropped from ₹8,000 to just ₹200 per month. SolarVolt
+                            team was professional, fast and transparent. Best investment I've ever made for my home.</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">RK</div>
+                            <div>
+                                <h5>Rajesh Kumar</h5>
+                                <p>Homeowner, Nagpur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testi-card">
+                        <div class="testi-stars">★★★★★</div>
+                        <p class="testi-text">Installed 200kW for our office complex. ROI was achieved in just 3.5
+                            years. The smart monitoring app is fantastic — I can track everything from my phone anytime.
+                        </p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">AM</div>
+                            <div>
+                                <h5>Ashish Mehta</h5>
+                                <p>Business Owner, Pune</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testi-card">
+                        <div class="testi-stars">★★★★★</div>
+                        <p class="testi-text">The subsidy process was handled completely by SolarVolt. I got ₹78,000
+                            back from the government without doing anything myself. Truly a premium experience.</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">SP</div>
+                            <div>
+                                <h5>Sunita Patil</h5>
+                                <p>Homeowner, Amravati</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testi-card">
+                        <div class="testi-stars">★★★★★</div>
+                        <p class="testi-text">We saved over ₹18 lakh in the first year on our factory's electricity
+                            costs. The SolarVolt industrial team is world-class. Highly recommended for any large scale
+                            project.</p>
+                        <div class="testi-author">
+                            <div class="testi-avatar">VJ</div>
+                            <div>
+                                <h5>Vijay Joshi</h5>
+                                <p>Factory Director, Aurangabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ TRUST BADGES ══════════════ -->
+    <section id="trust">
+        <p class="trust-title">CERTIFIED · VERIFIED · TRUSTED BY 2,500+ CUSTOMERS</p>
+        <div class="badges-grid">
+            <div class="badge reveal">
+                <i class="fas fa-certificate"></i>
+                <span>MNRE<br>Certified</span>
+            </div>
+            <div class="badge reveal">
+                <i class="fas fa-award"></i>
+                <span>ISO 9001<br>Certified</span>
+            </div>
+            <div class="badge reveal">
+                <i class="fas fa-shield-alt"></i>
+                <span>25-Year<br>Warranty</span>
+            </div>
+            <div class="badge reveal">
+                <i class="fas fa-rupee-sign"></i>
+                <span>Govt. Subsidy<br>Approved</span>
+            </div>
+            <div class="badge reveal">
+                <i class="fas fa-star"></i>
+                <span>4.9★ Google<br>Rating</span>
+            </div>
+            <div class="badge reveal">
+                <i class="fas fa-leaf"></i>
+                <span>Carbon<br>Neutral</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FAQ ══════════════ -->
+    <section id="faq">
+        <div class="text-center">
+            <div class="section-label">Common Questions</div>
+            <h2 class="section-title">Frequently <span>Asked</span></h2>
+            <p class="section-sub">Everything you need to know before going solar.</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    How much can I save on my electricity bill?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most homeowners save 70–90% on their electricity bills. A typical 5kW system generates 20–22
+                        units per day, which covers an average family's consumption. With net metering, excess units are
+                        sent to the grid and you earn credits from MSEDCL.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What government subsidies are available in Maharashtra?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Under PM Surya Ghar Muft Bijli Yojana, you get ₹30,000–₹78,000 subsidy for residential systems up
+                        to 3kW. Commercial systems also get accelerated depreciation benefit of 40%. SolarVolt handles
+                        the entire subsidy application for you at no extra charge.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    How long does installation take?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Residential installations are completed within 2–3 days. Commercial projects take 5–15 days
+                        depending on system size. The entire process from survey to commissioning takes 2–4 weeks
+                        including net meter application and grid connection.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What happens on cloudy or rainy days?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Solar panels still generate electricity on cloudy days, typically at 20–40% capacity. With net
+                        metering, units exported during sunny days are credited against your night and monsoon
+                        consumption. Battery backup options ensure 24/7 power supply.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is the lifespan of solar panels?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Premium solar panels last 30+ years. We provide a 25-year linear performance warranty — panels
+                        will produce at minimum 80% of rated power after 25 years. Inverters have a 10-year warranty
+                        with free replacement included in our premium packages.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is EMI available and what are the options?
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We offer 0% interest EMI for 12–36 months through our banking partners including HDFC, SBI,
+                        and Bajaj Finserv. Many customers find that their EMI amount is less than their current
+                        electricity bill — making it cash-flow positive from day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CTA SECTION ══════════════ -->
+    <section id="cta-main">
+        <div style="position:relative;z-index:2;">
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-bolt"></i> Limited Time Offer
+            </div>
+            <h2 class="section-title">Start Saving Today.<br><span>Zero Cost EMI Available.</span></h2>
+            <p class="section-sub" style="margin:1rem auto 2.5rem;">Get a free site survey and customized quote within
+                24 hours. No obligation, no pressure.</p>
+            <div class="cta-btns">
+                <a href="#contact" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;"><i
+                        class="fas fa-phone"></i>Book Free Survey</a>
+                <a href="https://wa.me/919876543210" target="_blank" class="btn-secondary"
+                    style="font-size:1rem;padding:1rem 2.5rem;"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
+            </div>
+            <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">★ 4.9/5 Google Rating &nbsp;·&nbsp; 2,500+
+                Installations &nbsp;·&nbsp; MNRE Certified</p>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact">
+        <div class="contact-grid">
+            <div>
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Free Site<br><span>Survey & Quote</span></h2>
+                <p class="section-sub">Our solar expert will visit your site, analyze your requirements and give you a
+                    detailed cost-savings report — absolutely free.</p>
+                <div class="contact-details" style="margin-top:2rem;">
+                    <div class="c-detail">
+                        <i class="fas fa-phone"></i>
+                        <div><strong>Call / WhatsApp</strong><span>+91 98765 43210</span></div>
+                    </div>
+                    <div class="c-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>Email Us</strong><span>hello@solarvolt.in</span></div>
+                    </div>
+                    <div class="c-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><strong>Head Office</strong><span>Nagpur, Maharashtra, India</span></div>
+                    </div>
+                    <div class="c-detail">
+                        <i class="fas fa-clock"></i>
+                        <div><strong>Working Hours</strong><span>Mon–Sat: 9am – 7pm</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <h3 style="font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;">Get Your Free
+                    Quote</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Your Name" id="fname" />
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" placeholder="Phone Number" id="fphone" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" id="femail" />
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="City / Area" id="fcity" />
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-solar-panel"></i>
+                        <select id="ftype">
+                            <option value="" disabled selected>System Type</option>
+                            <option>Residential (Home)</option>
+                            <option>Commercial (Office/Shop)</option>
+                            <option>Industrial (Factory)</option>
+                            <option>Agricultural</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-bolt"></i>
+                    <select id="fcapacity">
+                        <option value="" disabled selected>Monthly Bill / Capacity Needed</option>
+                        <option>Under ₹2,000/month (1–2 kW)</option>
+                        <option>₹2,000–₹5,000/month (3–5 kW)</option>
+                        <option>₹5,000–₹15,000/month (7–10 kW)</option>
+                        <option>₹15,000+/month (15 kW+)</option>
+                    </select>
+                </div>
+                <div class="form-group textarea">
+                    <i class="fas fa-comment"></i>
+                    <textarea placeholder="Additional requirements or questions..." id="fmessage"></textarea>
+                </div>
+                <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+                    <span class="btn-text"><i class="fas fa-paper-plane"></i> &nbsp;Send My Request</span>
+                    <div class="spinner"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fas fa-sun"></i></div>Solar<span>Volt</span>
+                </a>
+                <p class="footer-desc">India's most trusted solar energy company. Powering homes, businesses and
+                    industries with clean, renewable solar energy since 2015.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Residential Solar</a></li>
+                    <li><a href="#services">Commercial Solar</a></li>
+                    <li><a href="#services">Industrial Solar</a></li>
+                    <li><a href="#services">Battery Storage</a></li>
+                    <li><a href="#services">O&amp;M Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#">Subsidy Guide</a></li>
+                    <li><a href="#">EMI Calculator</a></li>
+                    <li><a href="#">Solar Calculator</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SolarVolt Energy Pvt. Ltd. All rights reserved. | Designed by Craftnix Digital</p>
+            <p style="font-size:.75rem;">MNRE Reg: MH-2024-0012 &nbsp;·&nbsp; GST: 27AAACV1234F1Z5</p>
+        </div>
+    </footer>
+
+    <!-- ══════════════ FLOATING BUTTONS ══════════════ -->
+    <a href="https://wa.me/919876543210" target="_blank" class="float-whatsapp" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="#contact" class="float-quote">
+        <i class="fas fa-bolt"></i> Get Quote
+    </a>
+
+    <!-- ══════════════ SUCCESS POPUP ══════════════ -->
+    <div class="success-popup" id="successPopup">
+        <div class="success-box">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h3>Request Sent!</h3>
+            <p>Thank you! Our solar expert will call you within 24 hours to schedule your free site survey.</p>
+            <button class="btn-close-popup" onclick="closePopup()">Great, Thanks!</button>
+        </div>
+    </div>
+
+    <script>
+        // ── NAVBAR SCROLL ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ── MOBILE MENU ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        function toggleMenu(open) {
+            hamburger.classList.toggle('open', open);
+            mobileMenu.classList.toggle('open', open);
+            overlay.classList.toggle('active', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        hamburger.addEventListener('click', () => toggleMenu(!mobileMenu.classList.contains('open')));
+        overlay.addEventListener('click', () => toggleMenu(false));
+        document.querySelectorAll('.nav-mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+
+        // ── STATS COUNTER ──
+        function animateCounter(el) {
+            const target = +el.dataset.target;
+            const suffix = el.dataset.suffix || '';
+            const duration = 2000;
+            const step = target / duration * 16;
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) { current = target; clearInterval(timer); }
+                el.textContent = Math.floor(current).toLocaleString() + suffix;
+            }, 16);
+        }
+        let statsAnimated = false;
+        const statsSection = document.getElementById('stats');
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !statsAnimated) {
+                statsAnimated = true;
+                document.querySelectorAll('.stat-number').forEach(el => animateCounter(el));
+            }
+        }, { threshold: 0.3 });
+        statsObserver.observe(statsSection);
+
+        // ── SCROLL REVEAL ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+            revealObserver.observe(el);
+        });
+
+        // ── TESTIMONIAL SLIDER ──
+        const track = document.getElementById('testiTrack');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const totalSlides = slides.length;
+        const visibleSlides = window.innerWidth > 768 ? 2 : 1;
+        const maxIndex = totalSlides - visibleSlides;
+
+        // Create dots
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        function goToSlide(n) {
+            currentSlide = Math.max(0, Math.min(n, maxIndex));
+            const w = slides[0].offsetWidth + 32;
+            track.style.transform = `translateX(-${currentSlide * w}px)`;
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        }
+        document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+        // Autoplay
+        let autoplay = setInterval(() => goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1), 4000);
+        track.addEventListener('mouseenter', () => clearInterval(autoplay));
+        track.addEventListener('mouseleave', () => { autoplay = setInterval(() => goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1), 4000); });
+
+        // ── FAQ ──
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-answer').style.maxHeight = '0';
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // ── CONTACT FORM ──
+        function submitForm() {
+            const btn = document.getElementById('submitBtn');
+            // Basic validation
+            const name = document.getElementById('fname').value.trim();
+            const phone = document.getElementById('fphone').value.trim();
+            if (!name || !phone) {
+                document.getElementById('fname').style.borderColor = 'rgba(255,80,80,0.5)';
+                return;
+            }
+            btn.classList.add('loading');
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                showSuccess();
+                document.getElementById('fname').value = '';
+                document.getElementById('fphone').value = '';
+                document.getElementById('femail').value = '';
+                document.getElementById('fcity').value = '';
+                document.getElementById('fmessage').value = '';
+            }, 2000);
+        }
+        function showSuccess() {
+            document.getElementById('successPopup').classList.add('show');
+        }
+        function closePopup() {
+            document.getElementById('successPopup').classList.remove('show');
+        }
+        document.getElementById('successPopup').addEventListener('click', function (e) {
+            if (e.target === this) closePopup();
+        });
+
+        // ── SMOOTH SCROLL ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const href = a.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
+</body>
+
+</html>
