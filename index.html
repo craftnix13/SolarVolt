@@ -57,7 +57,6 @@
             line-height: 1.15;
         }
 
-        /* ── SCROLLBAR ── */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -71,7 +70,6 @@
             border-radius: 3px;
         }
 
-        /* ── NOISE TEXTURE OVERLAY ── */
         body::before {
             content: '';
             position: fixed;
@@ -105,7 +103,6 @@
         }
 
         .logo {
-
             font-size: 1.2rem;
             font-weight: 800;
             color: var(--white);
@@ -185,7 +182,6 @@
             box-shadow: 0 8px 30px rgba(245, 166, 35, .5) !important;
         }
 
-        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -217,7 +213,6 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* Mobile menu */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -321,15 +316,8 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                transform: translateY(-50%) scale(1);
-            }
-
-            50% {
-                transform: translateY(-50%) scale(1.1);
-            }
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
         }
 
         .hero-content {
@@ -342,15 +330,8 @@
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-badge {
@@ -375,9 +356,7 @@
         }
 
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
         h1.hero-title {
@@ -510,15 +489,8 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         /* ── SECTION COMMON ── */
@@ -568,21 +540,10 @@
             line-height: 1.8;
         }
 
-        .text-center {
-            text-align: center;
-        }
-
-        .text-center .section-sub {
-            margin: 0 auto;
-        }
-
-        .text-center .section-label {
-            justify-content: center;
-        }
-
-        .text-center .section-label::before {
-            display: none;
-        }
+        .text-center { text-align: center; }
+        .text-center .section-sub { margin: 0 auto; }
+        .text-center .section-label { justify-content: center; }
+        .text-center .section-label::before { display: none; }
 
         /* ── STATS ── */
         #stats {
@@ -632,9 +593,7 @@
         }
 
         /* ── WHY CHOOSE US ── */
-        #why {
-            background: var(--dark2);
-        }
+        #why { background: var(--dark2); }
 
         .why-grid {
             display: grid;
@@ -719,10 +678,7 @@
             position: relative;
         }
 
-        .energy-circle svg {
-            width: 100%;
-            height: 100%;
-        }
+        .energy-circle svg { width: 100%; height: 100%; }
 
         .energy-stats {
             display: grid;
@@ -749,15 +705,10 @@
             background-clip: text;
         }
 
-        .e-stat span {
-            font-size: .75rem;
-            color: var(--muted);
-        }
+        .e-stat span { font-size: .75rem; color: var(--muted); }
 
         /* ── SERVICES ── */
-        #services {
-            background: var(--dark);
-        }
+        #services { background: var(--dark); }
 
         .services-grid {
             display: grid;
@@ -797,9 +748,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
+        .service-card:hover::before { transform: scaleX(1); }
 
         .service-num {
             font-family: "Saira Stencil", sans-serif;
@@ -849,14 +798,10 @@
             transition: gap .3s;
         }
 
-        .service-link:hover {
-            gap: 12px;
-        }
+        .service-link:hover { gap: 12px; }
 
         /* ── PROJECT GALLERY ── */
-        #projects {
-            background: var(--dark2);
-        }
+        #projects { background: var(--dark2); }
 
         .gallery-grid {
             display: grid;
@@ -866,6 +811,7 @@
             margin-top: 3rem;
         }
 
+        /* FIX: gallery-item is the anchor wrapper now */
         .gallery-item {
             border-radius: var(--radius);
             overflow: hidden;
@@ -873,22 +819,13 @@
             cursor: pointer;
             aspect-ratio: 4/3;
             background: var(--dark3);
+            display: block;
+            text-decoration: none;
         }
 
         .gallery-item:first-child {
             grid-column: span 2;
             aspect-ratio: 16/9;
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .6s ease;
-            background: linear-gradient(135deg, #1a2535, #0d1520);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .gallery-placeholder {
@@ -901,6 +838,14 @@
             background: linear-gradient(135deg, var(--dark3), var(--dark2));
             position: relative;
             overflow: hidden;
+            transition: transform .6s ease;
+        }
+
+        .gallery-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .gallery-placeholder::before {
@@ -916,6 +861,7 @@
             color: rgba(245, 166, 35, .4);
         }
 
+        /* FIX: overlay is pointer-events none so clicks pass through to anchor */
         .gallery-overlay {
             position: absolute;
             inset: 0;
@@ -926,19 +872,11 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.5rem;
+            pointer-events: none; /* FIX: don't block clicks */
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-item:hover .gallery-placeholder i {
-            transform: scale(1.1);
-        }
-
-        .gallery-item:hover .gallery-placeholder {
-            transform: scale(1.05);
-        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item:hover .gallery-placeholder { transform: scale(1.05); }
 
         .gallery-overlay h4 {
             font-size: 1.1rem;
@@ -966,16 +904,13 @@
             color: var(--dark);
             transform: scale(0);
             transition: transform .3s;
+            pointer-events: auto; /* re-enable for zoom icon */
         }
 
-        .gallery-item:hover .gallery-zoom {
-            transform: scale(1);
-        }
+        .gallery-item:hover .gallery-zoom { transform: scale(1); }
 
         /* ── PRICING ── */
-        #pricing {
-            background: var(--dark);
-        }
+        #pricing { background: var(--dark); }
 
         .pricing-grid {
             display: grid;
@@ -1040,10 +975,7 @@
             margin-bottom: .2rem;
         }
 
-        .price-amount sup {
-            font-size: 1.2rem;
-            color: var(--muted);
-        }
+        .price-amount sup { font-size: 1.2rem; color: var(--muted); }
 
         .price-amount span {
             font-size: 1rem;
@@ -1082,13 +1014,8 @@
             min-width: 16px;
         }
 
-        .price-features li.muted {
-            color: var(--muted);
-        }
-
-        .price-features li.muted i {
-            color: var(--muted);
-        }
+        .price-features li.muted { color: var(--muted); }
+        .price-features li.muted i { color: var(--muted); }
 
         .btn-price {
             display: block;
@@ -1118,14 +1045,10 @@
             box-shadow: 0 0 25px rgba(245, 166, 35, .4);
         }
 
-        .btn-price.solid:hover {
-            box-shadow: 0 8px 40px rgba(245, 166, 35, .6);
-        }
+        .btn-price.solid:hover { box-shadow: 0 8px 40px rgba(245, 166, 35, .6); }
 
         /* ── TESTIMONIALS ── */
-        #testimonials {
-            background: var(--dark2);
-        }
+        #testimonials { background: var(--dark2); }
 
         .testimonial-slider {
             position: relative;
@@ -1207,10 +1130,7 @@
             margin-bottom: .1rem;
         }
 
-        .testi-author p {
-            font-size: .8rem;
-            color: var(--muted);
-        }
+        .testi-author p { font-size: .8rem; color: var(--muted); }
 
         .slider-controls {
             display: flex;
@@ -1241,10 +1161,7 @@
             color: var(--gold);
         }
 
-        .slider-dots {
-            display: flex;
-            gap: .5rem;
-        }
+        .slider-dots { display: flex; gap: .5rem; }
 
         .dot {
             width: 8px;
@@ -1262,19 +1179,14 @@
         }
 
         /* ── FAQ ── */
-        #faq {
-            background: var(--dark);
-        }
+        #faq { background: var(--dark); }
 
         .faq-container {
             max-width: 800px;
             margin: 3rem auto 0;
         }
 
-        .faq-item {
-            border-bottom: 1px solid var(--glass-border);
-            overflow: hidden;
-        }
+        .faq-item { border-bottom: 1px solid var(--glass-border); overflow: hidden; }
 
         .faq-question {
             width: 100%;
@@ -1294,9 +1206,7 @@
             transition: color .3s;
         }
 
-        .faq-question:hover {
-            color: var(--gold);
-        }
+        .faq-question:hover { color: var(--gold); }
 
         .faq-icon {
             width: 28px;
@@ -1374,17 +1284,8 @@
             transform: translateY(-3px);
         }
 
-        .badge i {
-            font-size: 1.4rem;
-            color: var(--gold);
-        }
-
-        .badge span {
-            font-size: .8rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1.3;
-        }
+        .badge i { font-size: 1.4rem; color: var(--gold); }
+        .badge span { font-size: .8rem; font-weight: 600; color: var(--text); line-height: 1.3; }
 
         /* ── CTA SECTION ── */
         #cta-main {
@@ -1403,13 +1304,8 @@
             background: radial-gradient(ellipse at center, rgba(245, 166, 35, .1), transparent 70%);
         }
 
-        #cta-main .section-title {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-        }
-
-        #cta-main .section-sub {
-            margin: 1rem auto 2.5rem;
-        }
+        #cta-main .section-title { font-size: clamp(2rem, 4vw, 3.5rem); }
+        #cta-main .section-sub { margin: 1rem auto 2.5rem; }
 
         .cta-btns {
             display: flex;
@@ -1419,9 +1315,7 @@
         }
 
         /* ── CONTACT ── */
-        #contact {
-            background: var(--dark);
-        }
+        #contact { background: var(--dark); }
 
         .contact-grid {
             display: grid;
@@ -1462,9 +1356,7 @@
             transition: all .3s;
         }
 
-        .c-detail:hover {
-            border-color: rgba(245, 166, 35, .3);
-        }
+        .c-detail:hover { border-color: rgba(245, 166, 35, .3); }
 
         .c-detail i {
             width: 42px;
@@ -1487,12 +1379,8 @@
             margin-bottom: .2rem;
         }
 
-        .c-detail div span {
-            font-size: .9rem;
-            color: var(--white);
-        }
+        .c-detail div span { font-size: .9rem; color: var(--white); }
 
-        /* Form */
         .contact-form {
             background: var(--glass);
             border: 1px solid var(--glass-border);
@@ -1523,10 +1411,7 @@
             transition: color .3s;
         }
 
-        .form-group.textarea i {
-            top: 1.1rem;
-            transform: none;
-        }
+        .form-group.textarea i { top: 1.1rem; transform: none; }
 
         .form-group input,
         .form-group select,
@@ -1545,9 +1430,7 @@
             appearance: none;
         }
 
-        .form-group select {
-            cursor: pointer;
-        }
+        .form-group select { cursor: pointer; }
 
         .form-group textarea {
             padding-top: 1rem;
@@ -1556,14 +1439,9 @@
         }
 
         .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--muted);
-        }
+        .form-group textarea::placeholder { color: var(--muted); }
 
-        .form-group select option {
-            background: var(--dark2);
-            color: var(--white);
-        }
+        .form-group select option { background: var(--dark2); color: var(--white); }
 
         .form-group input:focus,
         .form-group select:focus,
@@ -1573,9 +1451,7 @@
             box-shadow: 0 0 0 3px rgba(245, 166, 35, .1);
         }
 
-        .form-group:focus-within i {
-            color: var(--gold);
-        }
+        .form-group:focus-within i { color: var(--gold); }
 
         .btn-submit {
             width: 100%;
@@ -1602,10 +1478,7 @@
             box-shadow: 0 12px 40px rgba(245, 166, 35, .5);
         }
 
-        .btn-submit.loading {
-            pointer-events: none;
-            opacity: .8;
-        }
+        .btn-submit.loading { pointer-events: none; opacity: .8; }
 
         .btn-submit .spinner {
             width: 18px;
@@ -1617,15 +1490,9 @@
             display: none;
         }
 
-        .btn-submit.loading .spinner {
-            display: block;
-        }
+        .btn-submit.loading .spinner { display: block; }
+        .btn-submit.loading .btn-text { display: none; }
 
-        .btn-submit.loading .btn-text {
-            display: none;
-        }
-
-        /* Success popup */
         .success-popup {
             position: fixed;
             inset: 0;
@@ -1640,10 +1507,7 @@
             transition: opacity .4s;
         }
 
-        .success-popup.show {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .success-popup.show { opacity: 1; pointer-events: all; }
 
         .success-box {
             background: var(--dark2);
@@ -1657,9 +1521,7 @@
             transition: transform .4s;
         }
 
-        .success-popup.show .success-box {
-            transform: scale(1);
-        }
+        .success-popup.show .success-box { transform: scale(1); }
 
         .success-icon {
             width: 72px;
@@ -1677,13 +1539,8 @@
         }
 
         @keyframes popIn {
-            from {
-                transform: scale(0);
-            }
-
-            to {
-                transform: scale(1);
-            }
+            from { transform: scale(0); }
+            to { transform: scale(1); }
         }
 
         .success-box h3 {
@@ -1726,10 +1583,7 @@
             margin-bottom: 3rem;
         }
 
-        .footer-brand .logo {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+        .footer-brand .logo { margin-bottom: 1rem; font-size: 1.3rem; }
 
         .footer-desc {
             font-size: .85rem;
@@ -1738,11 +1592,7 @@
             max-width: 280px;
         }
 
-        .footer-socials {
-            display: flex;
-            gap: .8rem;
-            margin-top: 1.2rem;
-        }
+        .footer-socials { display: flex; gap: .8rem; margin-top: 1.2rem; }
 
         .social-btn {
             width: 36px;
@@ -1788,9 +1638,7 @@
             transition: color .3s;
         }
 
-        .footer-col ul li a:hover {
-            color: var(--gold);
-        }
+        .footer-col ul li a:hover { color: var(--gold); }
 
         .footer-bottom {
             border-top: 1px solid var(--glass-border);
@@ -1802,14 +1650,8 @@
             gap: 1rem;
         }
 
-        .footer-bottom p {
-            font-size: .8rem;
-            color: var(--muted);
-        }
-
-        .footer-bottom span {
-            color: var(--gold);
-        }
+        .footer-bottom p { font-size: .8rem; color: var(--muted); }
+        .footer-bottom span { color: var(--gold); }
 
         /* ── FLOATING BUTTONS ── */
         .float-whatsapp {
@@ -1832,20 +1674,11 @@
             transition: transform .3s;
         }
 
-        .float-whatsapp:hover {
-            transform: scale(1.1);
-        }
+        .float-whatsapp:hover { transform: scale(1.1); }
 
         @keyframes bounceWA {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .float-quote {
@@ -1888,120 +1721,38 @@
 
         /* ── RESPONSIVE ── */
         @media(max-width:1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .price-card.featured {
-                transform: none;
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-item:nth-child(2)::after {
-                display: none;
-            }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: none; }
+            .why-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-visual { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2)::after { display: none; }
         }
 
         @media(max-width:768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            h1.hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-sub {
-                font-size: 14px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-item:first-child {
-                grid-column: span 1;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-slide {
-                min-width: 100%;
-            }
-
-            .hero-content {
-                margin-top: 15%;
-                margin-bottom: 4%;
-            }
-
-            .stat-number {
-                font-size: clamp(1.5rem, 2vw, 2.5rem);
-            }
-
-            #cta-main .section-title {
-                font-size: clamp(1.7rem, 4vw, 3.5rem);
-            }
-
-            .hero-badge {
-                font-size: 10px;
-            }
-
-            .btn-primary {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-
-            .btn-secondary {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-
-            .stat-item {
-                padding: 1.5rem 1.5rem;
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            h1.hero-title { font-size: 2.2rem; }
+            .hero-sub { font-size: 14px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:first-child { grid-column: span 1; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .testimonial-slide { min-width: 100%; }
+            .hero-content { margin-top: 15%; margin-bottom: 4%; }
+            .stat-number { font-size: clamp(1.5rem, 2vw, 2.5rem); }
+            #cta-main .section-title { font-size: clamp(1.7rem, 4vw, 3.5rem); }
+            .hero-badge { font-size: 10px; }
+            .btn-primary { padding: 10px 20px; font-size: 13px; }
+            .btn-secondary { padding: 10px 20px; font-size: 13px; }
+            .stat-item { padding: 1.5rem 1.5rem; }
         }
 
-        .logo img {
-            width: 30px;
-            height: 30px;
-        }
+        .logo img { width: 30px; height: 30px; }
     </style>
 </head>
 
@@ -2087,44 +1838,23 @@
                         <stop offset="100%" style="stop-color:#0f2040" />
                     </linearGradient>
                 </defs>
-                <!-- Ground shadow -->
                 <ellipse cx="260" cy="355" rx="180" ry="18" fill="rgba(0,0,0,0.3)" />
-                <!-- Panel frame -->
-                <rect x="50" y="60" width="420" height="270" rx="12" fill="url(#pg)" stroke="#2a4060"
-                    stroke-width="2" />
-                <!-- Solar cells grid -->
+                <rect x="50" y="60" width="420" height="270" rx="12" fill="url(#pg)" stroke="#2a4060" stroke-width="2" />
                 <g opacity="0.9">
-                    <!-- Row 1 -->
-                    <rect x="70" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="165" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="260" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="355" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <!-- Row 2 -->
-                    <rect x="70" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="165" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="260" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="355" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <!-- Row 3 -->
-                    <rect x="70" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="165" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="260" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
-                    <rect x="355" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080"
-                        stroke-width="1" />
+                    <rect x="70" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="165" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="260" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="355" y="80" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="70" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="165" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="260" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="355" y="145" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="70" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="165" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="260" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
+                    <rect x="355" y="210" width="85" height="55" rx="4" fill="url(#sg)" stroke="#1e4080" stroke-width="1" />
                 </g>
-                <!-- Highlight sheen -->
                 <rect x="50" y="60" width="420" height="120" rx="12" fill="url(#pg)" opacity="0.3" />
-                <!-- Sun -->
                 <circle cx="430" cy="40" r="28" fill="url(#cg)" opacity="0.9" />
                 <g stroke="#F5A623" stroke-width="2" opacity="0.6">
                     <line x1="430" y1="4" x2="430" y2="0" />
@@ -2136,14 +1866,10 @@
                     <line x1="404.5" y1="65.5" x2="401.6" y2="68.4" />
                     <line x1="455.5" y1="14.5" x2="458.4" y2="11.6" />
                 </g>
-                <!-- Support legs -->
                 <rect x="160" y="330" width="12" height="30" rx="4" fill="#1a2a3a" />
                 <rect x="348" y="330" width="12" height="30" rx="4" fill="#1a2a3a" />
-                <!-- Energy indicators -->
-                <circle cx="100" cy="30" r="20" fill="rgba(0,198,162,0.15)" stroke="rgba(0,198,162,0.4)"
-                    stroke-width="1" />
-                <text x="100" y="35" text-anchor="middle" fill="#00C6A2" font-size="11" font-family="Syne,sans-serif"
-                    font-weight="700">ON</text>
+                <circle cx="100" cy="30" r="20" fill="rgba(0,198,162,0.15)" stroke="rgba(0,198,162,0.4)" stroke-width="1" />
+                <text x="100" y="35" text-anchor="middle" fill="#00C6A2" font-size="11" font-family="Syne,sans-serif" font-weight="700">ON</text>
             </svg>
         </div>
     </section>
@@ -2183,8 +1909,7 @@
                         <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
                         <div>
                             <h4>25-Year Product Warranty</h4>
-                            <p>Every panel backed by comprehensive warranty. Your investment is fully protected for 25
-                                years.</p>
+                            <p>Every panel backed by comprehensive warranty. Your investment is fully protected for 25 years.</p>
                         </div>
                     </div>
                     <div class="why-card reveal">
@@ -2198,16 +1923,14 @@
                         <div class="why-icon"><i class="fas fa-certificate"></i></div>
                         <div>
                             <h4>MNRE Certified Installer</h4>
-                            <p>Government of India approved. Eligible for all state &amp; central subsidies
-                                automatically.</p>
+                            <p>Government of India approved. Eligible for all state &amp; central subsidies automatically.</p>
                         </div>
                     </div>
                     <div class="why-card reveal">
                         <div class="why-icon"><i class="fas fa-rupee-sign"></i></div>
                         <div>
                             <h4>Easy EMI — 0% Interest</h4>
-                            <p>Finance your solar system with zero cost EMI options. ROI within 3-4 years guaranteed.
-                            </p>
+                            <p>Finance your solar system with zero cost EMI options. ROI within 3-4 years guaranteed.</p>
                         </div>
                     </div>
                 </div>
@@ -2221,8 +1944,7 @@
                                 <stop offset="100%" style="stop-color:#00C6A2" />
                             </linearGradient>
                         </defs>
-                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)"
-                            stroke-width="20" />
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="20" />
                         <circle cx="100" cy="100" r="80" fill="none" stroke="url(#circleGrad)" stroke-width="20"
                             stroke-dasharray="440" stroke-dashoffset="88" stroke-linecap="round"
                             transform="rotate(-90 100 100)" style="filter:drop-shadow(0 0 12px rgba(245,166,35,0.6))" />
@@ -2233,22 +1955,10 @@
                     </svg>
                 </div>
                 <div class="energy-stats">
-                    <div class="e-stat">
-                        <strong>₹0</strong>
-                        <span>Electricity Bill</span>
-                    </div>
-                    <div class="e-stat">
-                        <strong>4 yrs</strong>
-                        <span>Payback Period</span>
-                    </div>
-                    <div class="e-stat">
-                        <strong>CO₂</strong>
-                        <span>Zero Emission</span>
-                    </div>
-                    <div class="e-stat">
-                        <strong>24/7</strong>
-                        <span>Monitoring App</span>
-                    </div>
+                    <div class="e-stat"><strong>₹0</strong><span>Electricity Bill</span></div>
+                    <div class="e-stat"><strong>4 yrs</strong><span>Payback Period</span></div>
+                    <div class="e-stat"><strong>CO₂</strong><span>Zero Emission</span></div>
+                    <div class="e-stat"><strong>24/7</strong><span>Monitoring App</span></div>
                 </div>
             </div>
         </div>
@@ -2259,56 +1969,49 @@
         <div class="text-center">
             <div class="section-label">What We Offer</div>
             <h2 class="section-title">Complete Solar <span>Solutions</span></h2>
-            <p class="section-sub">From design to installation and beyond — we handle everything so you don't have to.
-            </p>
+            <p class="section-sub">From design to installation and beyond — we handle everything so you don't have to.</p>
         </div>
         <div class="services-grid" style="margin-top:4rem;">
             <div class="service-card reveal">
                 <div class="service-num">01</div>
                 <div class="service-icon"><i class="fas fa-home"></i></div>
                 <h3>Residential Solar</h3>
-                <p>Custom rooftop solar systems for homes. 1kW to 10kW systems with net metering and subsidy assistance
-                    included.</p>
+                <p>Custom rooftop solar systems for homes. 1kW to 10kW systems with net metering and subsidy assistance included.</p>
                 <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">02</div>
                 <div class="service-icon"><i class="fas fa-building"></i></div>
                 <h3>Commercial Solar</h3>
-                <p>High-capacity systems for offices, factories &amp; malls. Reduce operational costs and achieve
-                    sustainability goals.</p>
+                <p>High-capacity systems for offices, factories &amp; malls. Reduce operational costs and achieve sustainability goals.</p>
                 <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">03</div>
                 <div class="service-icon"><i class="fas fa-industry"></i></div>
                 <h3>Industrial Solar</h3>
-                <p>Megawatt-scale solar plants for industries. Custom EPC solutions with complete project management.
-                </p>
+                <p>Megawatt-scale solar plants for industries. Custom EPC solutions with complete project management.</p>
                 <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">04</div>
                 <div class="service-icon"><i class="fas fa-battery-full"></i></div>
                 <h3>Battery Storage</h3>
-                <p>Store excess solar energy with lithium-ion battery systems. 24/7 power backup with smart management.
-                </p>
+                <p>Store excess solar energy with lithium-ion battery systems. 24/7 power backup with smart management.</p>
                 <a href="#contact" class="service-link">Get Quote <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">05</div>
                 <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
                 <h3>Smart Monitoring</h3>
-                <p>Real-time energy monitoring via mobile app. Track generation, consumption and savings from anywhere.
-                </p>
+                <p>Real-time energy monitoring via mobile app. Track generation, consumption and savings from anywhere.</p>
                 <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service-card reveal">
                 <div class="service-num">06</div>
                 <div class="service-icon"><i class="fas fa-wrench"></i></div>
                 <h3>O&amp;M Services</h3>
-                <p>Annual maintenance contracts for all brands. Professional cleaning, inspection and performance
-                    optimization.</p>
+                <p>Annual maintenance contracts for all brands. Professional cleaning, inspection and performance optimization.</p>
                 <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
@@ -2319,83 +2022,71 @@
         <div class="text-center">
             <div class="section-label">Our Work</div>
             <h2 class="section-title">Installed <span>Across India</span></h2>
-            <p class="section-sub">
-                2,500+ successful installations. Every project designed for maximum output and long-term performance.
-            </p>
+            <p class="section-sub">2,500+ successful installations. Every project designed for maximum output and long-term performance.</p>
         </div>
 
         <div class="gallery-grid" style="margin-top:3rem;">
 
+            <!-- FIX: <a class="glightbox gallery-item"> wraps everything including overlay -->
             <!-- Item 1 -->
-            <div class="gallery-item">
-
-                <a href="images/Residential.png" class="glightbox">
-                    <div class="gallery-placeholder">
-                        <img src="images/Residential.png" style="width:100%;">
-                    </div>
-                </a>
-
-                <div class="gallery-overlay">
-                    <h4>Nagpur Residential Complex</h4>
+            <a href="images/Residential.png" class="glightbox gallery-item" data-title="Nagpur Residential Complex">
+                <div class="gallery-placeholder">
+                    <img src="images/Residential.png" alt="Nagpur Residential Complex" style="width:100%;height:100%;object-fit:cover;">
                 </div>
-
-            </div>
+                <div class="gallery-overlay">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    <h4>Nagpur Residential Complex</h4>
+                    <p>50kW System · 24 Flats</p>
+                </div>
+            </a>
 
             <!-- Item 2 -->
-            <div class="gallery-item reveal">
-                <a href="images/itpark.jpg" class="glightbox">
-                    <div class="gallery-placeholder">
-                        <img src="images/itpark.jpg">
-                    </div>
-                </a>
+            <a href="images/itpark.jpg" class="glightbox gallery-item reveal" data-title="Pune IT Park">
+                <div class="gallery-placeholder">
+                    <img src="images/itpark.jpg" alt="Pune IT Park" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="gallery-overlay">
                     <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
                     <h4>Pune IT Park</h4>
                     <p>200kW System · 100% Green Office</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Item 3 -->
-            <div class="gallery-item reveal">
-                <a href="images/retail.jpg" class="glightbox">
-                    <div class="gallery-placeholder">
-                        <img src="images/retail.jpg">
-                    </div>
-                </a>
+            <a href="images/retail.jpg" class="glightbox gallery-item reveal" data-title="Mumbai Retail Chain">
+                <div class="gallery-placeholder">
+                    <img src="images/retail.jpg" alt="Mumbai Retail Chain" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="gallery-overlay">
                     <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
                     <h4>Mumbai Retail Chain</h4>
                     <p>500kW System · 15 Locations</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Item 4 -->
-            <div class="gallery-item reveal">
-                <a href="images/school.jpg" class="glightbox">
-                    <div class="gallery-placeholder">
-                        <img src="images/school.jpg">
-                    </div>
-                </a>
+            <a href="images/school.jpg" class="glightbox gallery-item reveal" data-title="Amravati School Campus">
+                <div class="gallery-placeholder">
+                    <img src="images/school.jpg" alt="Amravati School Campus" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="gallery-overlay">
                     <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
                     <h4>Amravati School Campus</h4>
                     <p>30kW System · Zero Bill School</p>
                 </div>
-            </div>
+            </a>
 
             <!-- Item 5 -->
-            <div class="gallery-item reveal">
-                <a href="images/factory.jpg" class="glightbox">
-                    <div class="gallery-placeholder">
-                        <img src="images/factory.jpg">
-                    </div>
-                </a>
+            <a href="images/factory.jpg" class="glightbox gallery-item reveal" data-title="Aurangabad Factory">
+                <div class="gallery-placeholder">
+                    <img src="images/factory.jpg" alt="Aurangabad Factory" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div class="gallery-overlay">
                     <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
                     <h4>Aurangabad Factory</h4>
                     <p>1MW Industrial Plant · 2024</p>
                 </div>
-            </div>
+            </a>
 
         </div>
     </section>
@@ -2405,8 +2096,7 @@
         <div class="text-center">
             <div class="section-label">Solar Packages</div>
             <h2 class="section-title">Transparent <span>Pricing</span></h2>
-            <p class="section-sub">No hidden costs. Government subsidy applied automatically. EMI available at 0%
-                interest.</p>
+            <p class="section-sub">No hidden costs. Government subsidy applied automatically. EMI available at 0% interest.</p>
         </div>
         <div class="pricing-grid">
             <div class="price-card reveal">
@@ -2472,58 +2162,40 @@
                 <div class="testimonial-slide">
                     <div class="testi-card">
                         <div class="testi-stars">★★★★★</div>
-                        <p class="testi-text">My electricity bill dropped from ₹8,000 to just ₹200 per month. SolarVolt
-                            team was professional, fast and transparent. Best investment I've ever made for my home.</p>
+                        <p class="testi-text">My electricity bill dropped from ₹8,000 to just ₹200 per month. SolarVolt team was professional, fast and transparent. Best investment I've ever made for my home.</p>
                         <div class="testi-author">
                             <div class="testi-avatar">RK</div>
-                            <div>
-                                <h5>Rajesh Kumar</h5>
-                                <p>Homeowner, Nagpur</p>
-                            </div>
+                            <div><h5>Rajesh Kumar</h5><p>Homeowner, Nagpur</p></div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-slide">
                     <div class="testi-card">
                         <div class="testi-stars">★★★★★</div>
-                        <p class="testi-text">Installed 200kW for our office complex. ROI was achieved in just 3.5
-                            years. The smart monitoring app is fantastic — I can track everything from my phone anytime.
-                        </p>
+                        <p class="testi-text">Installed 200kW for our office complex. ROI was achieved in just 3.5 years. The smart monitoring app is fantastic — I can track everything from my phone anytime.</p>
                         <div class="testi-author">
                             <div class="testi-avatar">AM</div>
-                            <div>
-                                <h5>Ashish Mehta</h5>
-                                <p>Business Owner, Pune</p>
-                            </div>
+                            <div><h5>Ashish Mehta</h5><p>Business Owner, Pune</p></div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-slide">
                     <div class="testi-card">
                         <div class="testi-stars">★★★★★</div>
-                        <p class="testi-text">The subsidy process was handled completely by SolarVolt. I got ₹78,000
-                            back from the government without doing anything myself. Truly a premium experience.</p>
+                        <p class="testi-text">The subsidy process was handled completely by SolarVolt. I got ₹78,000 back from the government without doing anything myself. Truly a premium experience.</p>
                         <div class="testi-author">
                             <div class="testi-avatar">SP</div>
-                            <div>
-                                <h5>Sunita Patil</h5>
-                                <p>Homeowner, Amravati</p>
-                            </div>
+                            <div><h5>Sunita Patil</h5><p>Homeowner, Amravati</p></div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-slide">
                     <div class="testi-card">
                         <div class="testi-stars">★★★★★</div>
-                        <p class="testi-text">We saved over ₹18 lakh in the first year on our factory's electricity
-                            costs. The SolarVolt industrial team is world-class. Highly recommended for any large scale
-                            project.</p>
+                        <p class="testi-text">We saved over ₹18 lakh in the first year on our factory's electricity costs. The SolarVolt industrial team is world-class. Highly recommended for any large scale project.</p>
                         <div class="testi-author">
                             <div class="testi-avatar">VJ</div>
-                            <div>
-                                <h5>Vijay Joshi</h5>
-                                <p>Factory Director, Aurangabad</p>
-                            </div>
+                            <div><h5>Vijay Joshi</h5><p>Factory Director, Aurangabad</p></div>
                         </div>
                     </div>
                 </div>
@@ -2540,30 +2212,12 @@
     <section id="trust">
         <p class="trust-title">CERTIFIED · VERIFIED · TRUSTED BY 2,500+ CUSTOMERS</p>
         <div class="badges-grid">
-            <div class="badge reveal">
-                <i class="fas fa-certificate"></i>
-                <span>MNRE<br>Certified</span>
-            </div>
-            <div class="badge reveal">
-                <i class="fas fa-award"></i>
-                <span>ISO 9001<br>Certified</span>
-            </div>
-            <div class="badge reveal">
-                <i class="fas fa-shield-alt"></i>
-                <span>25-Year<br>Warranty</span>
-            </div>
-            <div class="badge reveal">
-                <i class="fas fa-rupee-sign"></i>
-                <span>Govt. Subsidy<br>Approved</span>
-            </div>
-            <div class="badge reveal">
-                <i class="fas fa-star"></i>
-                <span>4.9★ Google<br>Rating</span>
-            </div>
-            <div class="badge reveal">
-                <i class="fas fa-leaf"></i>
-                <span>Carbon<br>Neutral</span>
-            </div>
+            <div class="badge reveal"><i class="fas fa-certificate"></i><span>MNRE<br>Certified</span></div>
+            <div class="badge reveal"><i class="fas fa-award"></i><span>ISO 9001<br>Certified</span></div>
+            <div class="badge reveal"><i class="fas fa-shield-alt"></i><span>25-Year<br>Warranty</span></div>
+            <div class="badge reveal"><i class="fas fa-rupee-sign"></i><span>Govt. Subsidy<br>Approved</span></div>
+            <div class="badge reveal"><i class="fas fa-star"></i><span>4.9★ Google<br>Rating</span></div>
+            <div class="badge reveal"><i class="fas fa-leaf"></i><span>Carbon<br>Neutral</span></div>
         </div>
     </section>
 
@@ -2576,70 +2230,28 @@
         </div>
         <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-question">
-                    How much can I save on my electricity bill?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Most homeowners save 70–90% on their electricity bills. A typical 5kW system generates 20–22
-                        units per day, which covers an average family's consumption. With net metering, excess units are
-                        sent to the grid and you earn credits from MSEDCL.</p>
-                </div>
+                <button class="faq-question">How much can I save on my electricity bill?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Most homeowners save 70–90% on their electricity bills. A typical 5kW system generates 20–22 units per day, which covers an average family's consumption. With net metering, excess units are sent to the grid and you earn credits from MSEDCL.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
-                    What government subsidies are available in Maharashtra?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Under PM Surya Ghar Muft Bijli Yojana, you get ₹30,000–₹78,000 subsidy for residential systems up
-                        to 3kW. Commercial systems also get accelerated depreciation benefit of 40%. SolarVolt handles
-                        the entire subsidy application for you at no extra charge.</p>
-                </div>
+                <button class="faq-question">What government subsidies are available in Maharashtra?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Under PM Surya Ghar Muft Bijli Yojana, you get ₹30,000–₹78,000 subsidy for residential systems up to 3kW. Commercial systems also get accelerated depreciation benefit of 40%. SolarVolt handles the entire subsidy application for you at no extra charge.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
-                    How long does installation take?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Residential installations are completed within 2–3 days. Commercial projects take 5–15 days
-                        depending on system size. The entire process from survey to commissioning takes 2–4 weeks
-                        including net meter application and grid connection.</p>
-                </div>
+                <button class="faq-question">How long does installation take?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Residential installations are completed within 2–3 days. Commercial projects take 5–15 days depending on system size. The entire process from survey to commissioning takes 2–4 weeks including net meter application and grid connection.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
-                    What happens on cloudy or rainy days?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Solar panels still generate electricity on cloudy days, typically at 20–40% capacity. With net
-                        metering, units exported during sunny days are credited against your night and monsoon
-                        consumption. Battery backup options ensure 24/7 power supply.</p>
-                </div>
+                <button class="faq-question">What happens on cloudy or rainy days?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Solar panels still generate electricity on cloudy days, typically at 20–40% capacity. With net metering, units exported during sunny days are credited against your night and monsoon consumption. Battery backup options ensure 24/7 power supply.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
-                    What is the lifespan of solar panels?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Premium solar panels last 30+ years. We provide a 25-year linear performance warranty — panels
-                        will produce at minimum 80% of rated power after 25 years. Inverters have a 10-year warranty
-                        with free replacement included in our premium packages.</p>
-                </div>
+                <button class="faq-question">What is the lifespan of solar panels?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Premium solar panels last 30+ years. We provide a 25-year linear performance warranty — panels will produce at minimum 80% of rated power after 25 years. Inverters have a 10-year warranty with free replacement included in our premium packages.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
-                    Is EMI available and what are the options?
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p>Yes! We offer 0% interest EMI for 12–36 months through our banking partners including HDFC, SBI,
-                        and Bajaj Finserv. Many customers find that their EMI amount is less than their current
-                        electricity bill — making it cash-flow positive from day one.</p>
-                </div>
+                <button class="faq-question">Is EMI available and what are the options?<span class="faq-icon"><i class="fas fa-plus"></i></span></button>
+                <div class="faq-answer"><p>Yes! We offer 0% interest EMI for 12–36 months through our banking partners including HDFC, SBI, and Bajaj Finserv. Many customers find that their EMI amount is less than their current electricity bill — making it cash-flow positive from day one.</p></div>
             </div>
         </div>
     </section>
@@ -2647,19 +2259,14 @@
     <!-- ══════════════ CTA SECTION ══════════════ -->
     <section id="cta-main">
         <div style="position:relative;z-index:2;">
-            <div class="section-label" style="justify-content:center;"><i class="fas fa-bolt"></i> Limited Time Offer
-            </div>
+            <div class="section-label" style="justify-content:center;"><i class="fas fa-bolt"></i> Limited Time Offer</div>
             <h2 class="section-title">Start Saving Today.<br><span>Zero Cost EMI Available.</span></h2>
-            <p class="section-sub" style="margin:1rem auto 2.5rem;">Get a free site survey and customized quote within
-                24 hours. No obligation, no pressure.</p>
+            <p class="section-sub" style="margin:1rem auto 2.5rem;">Get a free site survey and customized quote within 24 hours. No obligation, no pressure.</p>
             <div class="cta-btns">
-                <a href="#contact" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;"><i
-                        class="fas fa-phone"></i>Book Free Survey</a>
-                <a href="https://wa.me/911234567890" target="_blank" class="btn-secondary"
-                    style="font-size:1rem;padding:1rem 2.5rem;"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
+                <a href="#contact" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;"><i class="fas fa-phone"></i>Book Free Survey</a>
+                <a href="https://wa.me/911234567890" target="_blank" class="btn-secondary" style="font-size:1rem;padding:1rem 2.5rem;"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
             </div>
-            <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">★ 4.9/5 Google Rating &nbsp;·&nbsp; 2,500+
-                Installations &nbsp;·&nbsp; MNRE Certified</p>
+            <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">★ 4.9/5 Google Rating &nbsp;·&nbsp; 2,500+ Installations &nbsp;·&nbsp; MNRE Certified</p>
         </div>
     </section>
 
@@ -2669,8 +2276,7 @@
             <div>
                 <div class="section-label">Get In Touch</div>
                 <h2 class="section-title">Free Site<br><span>Survey & Quote</span></h2>
-                <p class="section-sub">Our solar expert will visit your site, analyze your requirements and give you a
-                    detailed cost-savings report — absolutely free.</p>
+                <p class="section-sub">Our solar expert will visit your site, analyze your requirements and give you a detailed cost-savings report — absolutely free.</p>
                 <div class="contact-details" style="margin-top:2rem;">
                     <div class="c-detail">
                         <i class="fas fa-phone"></i>
@@ -2691,8 +2297,7 @@
                 </div>
             </div>
             <div class="contact-form reveal">
-                <h3 style="font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;">Get Your Free
-                    Quote</h3>
+                <h3 style="font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;">Get Your Free Quote</h3>
                 <div class="form-row">
                     <div class="form-group">
                         <i class="fas fa-user"></i>
@@ -2752,8 +2357,7 @@
                 <a href="#" class="logo">
                     <div class="logo-icon"><i class="fas fa-sun"></i></div>Solar<span>Volt</span>
                 </a>
-                <p class="footer-desc">India's most trusted solar energy company. Powering homes, businesses and
-                    industries with clean, renewable solar energy since 2015.</p>
+                <p class="footer-desc">India's most trusted solar energy company. Powering homes, businesses and industries with clean, renewable solar energy since 2015.</p>
                 <div class="footer-socials">
                     <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
@@ -2816,6 +2420,9 @@
             <button class="btn-close-popup" onclick="closePopup()">Great, Thanks!</button>
         </div>
     </div>
+
+    <!-- ══════════════ GLIGHTBOX — loaded before init script ══════════════ -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
     <script>
         // ── NAVBAR SCROLL ──
@@ -2883,8 +2490,6 @@
         const totalSlides = slides.length;
         const visibleSlides = window.innerWidth > 768 ? 2 : 1;
         const maxIndex = totalSlides - visibleSlides;
-
-        // Create dots
         for (let i = 0; i <= maxIndex; i++) {
             const dot = document.createElement('div');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -2899,10 +2504,11 @@
         }
         document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
         document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
-        // Autoplay
         let autoplay = setInterval(() => goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1), 4000);
         track.addEventListener('mouseenter', () => clearInterval(autoplay));
-        track.addEventListener('mouseleave', () => { autoplay = setInterval(() => goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1), 4000); });
+        track.addEventListener('mouseleave', () => {
+            autoplay = setInterval(() => goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1), 4000);
+        });
 
         // ── FAQ ──
         document.querySelectorAll('.faq-question').forEach(btn => {
@@ -2924,7 +2530,6 @@
         // ── CONTACT FORM ──
         function submitForm() {
             const btn = document.getElementById('submitBtn');
-            // Basic validation
             const name = document.getElementById('fname').value.trim();
             const phone = document.getElementById('fphone').value.trim();
             if (!name || !phone) {
@@ -2961,14 +2566,12 @@
                 if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
+
+        // ── GLIGHTBOX INIT ──
+        document.addEventListener('DOMContentLoaded', function () {
+            GLightbox({ selector: '.glightbox' });
+        });
     </script>
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-<script>
-    const lightbox = GLightbox({
-        selector: '.glightbox'
-    });
-</script>
-
 </html>
